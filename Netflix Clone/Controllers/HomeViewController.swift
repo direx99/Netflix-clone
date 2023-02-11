@@ -11,7 +11,7 @@ class HomeViewController: UIViewController {
     
     private let homeFeedTable: UITableView = {
         let table = UITableView()
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        table.register(CollectionViewTableViewCell.self, forCellReuseIdentifier: CollectionViewTableViewCell.indentifire)
         return table
     }()
 
@@ -43,8 +43,8 @@ extension HomeViewController: UITableViewDelegate , UITableViewDataSource {
         return 20
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell  = tableView.dequeueReusableCell(withIdentifier: "cell" , for: indexPath)
-        cell.textLabel?.text = "Hello"
+        guard let cell  = tableView.dequeueReusableCell(withIdentifier: CollectionViewTableViewCell.indentifire, for: indexPath) as? CollectionViewTableViewCell else{ return UITableViewCell()
+        }
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
