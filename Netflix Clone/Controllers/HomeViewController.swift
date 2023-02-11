@@ -9,8 +9,11 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    
+    
+    
     private let homeFeedTable: UITableView = {
-        let table = UITableView()
+        let table = UITableView(frame: .zero, style: .grouped)
         table.register(CollectionViewTableViewCell.self, forCellReuseIdentifier: CollectionViewTableViewCell.indentifire)
         return table
     }()
@@ -39,8 +42,13 @@ class HomeViewController: UIViewController {
 
 
 extension HomeViewController: UITableViewDelegate , UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        20
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell  = tableView.dequeueReusableCell(withIdentifier: CollectionViewTableViewCell.indentifire, for: indexPath) as? CollectionViewTableViewCell else{ return UITableViewCell()
